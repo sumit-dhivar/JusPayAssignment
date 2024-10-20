@@ -6,8 +6,8 @@ module.exports = {
     app: "./src/index.js",
   },
   output: {
-    // filename: "app.js",
-    path: path.resolve(__dirname, "public"),
+    filename: "app.js",  // Ensures the output JS file will be called app.js
+    path: path.resolve(__dirname, "public"),  // Folder where the build will go
   },
   module: {
     rules: [
@@ -24,7 +24,7 @@ module.exports = {
                   [
                     "postcss-preset-env",
                     {
-                      // Options
+                      // Options for postcss
                     },
                   ],
                 ],
@@ -45,5 +45,7 @@ module.exports = {
       },
     ],
   },
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [new MiniCssExtractPlugin({
+    filename: "app.css",  // This will ensure the extracted CSS is named app.css
+  })],
 };
